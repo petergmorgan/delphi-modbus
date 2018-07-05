@@ -71,6 +71,7 @@ const
   
 const
   DefaultLogTimeFormat = 'yyyy-mm-dd hh:nn:ss.zzz';  {Do not Localize}
+  sInputBufferSizeExceptionMessage = 'Input buffer size greater than Modbus max packet length';
   
 implementation
 

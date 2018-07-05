@@ -344,7 +344,10 @@ begin
 {$IFDEF DMB_INDY10}
   iSize := IOHandler.InputBuffer.Size;
   IOHandler.ReadBytes(RecBuffer, iSize);
-  Move(RecBuffer[0], ReceiveBuffer, iSize);
+  if iSize<=Sizeof(ReceiveBuffer) then
+    Move(RecBuffer[0], ReceiveBuffer, iSize)
+  else
+    raise Exception.Create(sInputBufferSizeExceptionMessage);
 {$ELSE}
   ReadBuffer(ReceiveBuffer, InputBuffer.Size);
 {$ENDIF}
